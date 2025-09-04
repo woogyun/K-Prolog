@@ -61,12 +61,41 @@ K-Prolog의 이항 비교 연산자 중 `<`, `>`, `>=`는 Python과 유사합니
 ## 기본 술어(built-in predicates)
 Prolog에 사용되는 기본 술어를 K-Prolog에서 어떻게 사용할 수 있는지 알파벳 순으로 정리합니다. 새로 추가했으면 하는 술어가 있다면 연락 주시기 바랍니다.
 ``` shell
+asserta         추가
+atomic          상수인가
+atom_concat     상수연결
+atom_chars      문자리스트
+append          접합
+between         이내
+char_code       문자코드
+display         출력에쓰기
 fail            포기
+findall         모두찾기
+flatten         평평히
+forall          모두만족
 initialization  초기화
+integer         정수인가
 is              :=
+is_list         리스트인가
+keysort         키정렬
+length          길이
+maplist         목록에적용
+member          원소
+memberchk       원소점검
+mod             나머지
 nl              줄바꿈
+nonvar          변수아닌가
 not             논리부정
+number          수
+ord_subset      서열부분집합
+permutation     순열
 read            읽기
+recorda         레코드기록
+reverse         거꾸로
+select          선택
+setof           집합
+sort            정렬
+subtract        원소제거
 write           쓰기
 writeln         쓰고줄바꿈
 ```
@@ -108,7 +137,7 @@ k-prolog.exe filename.kpl
 
 
 ## K-Prolog 코드 예제(nqueens.kpl)
-``` shell
+``` prolog
 퀸들(_엔,_큐에스) :- 범위(1,_엔,_엔에스), 순열(_엔에스,_큐에스), 안전(_큐에스).
 
 안전([]).
@@ -142,7 +171,7 @@ k-prolog.exe filename.kpl
 
 ## 테스트 입력: 명령줄 인터페이스
 
-``` shell
+``` prolog
 ?- [nqueen].
 nqueen.kpl에서 적재했습니다.
 ?- 메인.
