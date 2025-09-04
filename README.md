@@ -21,7 +21,15 @@ python main.py gcd_batch.kpl
 적재(파일기본이름).
 재적재.
 목록.
+종료.
+```
+
+다음은 디버깅(debugging)에 사용되는 명령어입니다.
+``` shell
 추적.
+다음.
+중단.
+나가기.
 추적중단.
 종료.
 ```
@@ -50,6 +58,18 @@ K-Prolog의 이항 비교 연산자 중 `<`, `>`, `>=`는 Python과 유사합니
 ### 주석
 퍼센트 `%` 문자 이하 줄바꿈문자(newline)까지는 주석으로 취급됩니다.
 
+## 기본 술어(built-in predicates)
+Prolog에 사용되는 기본 술어를 K-Prolog에서 어떻게 사용할 수 있는지 알파벳 순으로 정리합니다. 새로 추가했으면 하는 술어가 있다면 연락 주시기 바랍니다.
+``` shell
+fail            포기
+initialization  초기화
+is              :=
+nl              줄바꿈
+not             논리부정
+read            읽기
+write           쓰기
+writeln         쓰고줄바꿈
+```
 
 <!--
 ### Mac
