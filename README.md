@@ -1,13 +1,57 @@
 # K-Prolog
 
 
-K-Prolog: 한글 Prolog 인터프리터입니다
+K-Prolog: 한글 Prolog 인터프리터입니다.
 
 ## 실행 방법
-<!-- Python 3.10 이상을 설치한 후 다음 명령을 수행합니다.
+Python 3.10 이상을 설치한 후 다음 명령을 수행합니다.
 ``` shell
+python main.py
+```
 
-``` -->
+일괄 프로그래밍(batch programming) 형태로 작성된 파일을 수행하려면 다음과 같시 파일 이름을 인수로 전달합니다.
+``` shell
+python main.py gcd_batch.kpl
+```
+
+## K-Prolog 인터프리터 명령어
+다음과 같은 명령어를 K-Prolog 셸에서 사용할 수 있습니다.
+``` shell
+[파일기본이름].
+적재(파일기본이름).
+재적재.
+목록.
+추적.
+추적중단.
+종료.
+```
+
+## K-Prolog의 관례
+Prolog와 다른, K-Prolog의 관례를 간단히 설명하겠습니다.
+Prolog는 대문자를 변수로 취급합니다. K-Prolog에서 변수는 밑줄(`_`)로 시작합니다.
+
+Prolog에서 수식의 값을 구할 때는 `is`를 사용하지만 K-Prolog에서는 대입 연산자 `:=`를 이용합니다. 예컨대 다음과 같은 술어를 사용하면
+```prolog
+_합 := 12 + 13.
+```
+변수 `_합`의 값은 `25`가 됩니다.
+
+### 산술 연산
+K-Prolog에서는 이항 사칙연산자(`+`, `-`, `*`, `/`)를 사용할 수 있습니다. 
+정수 나눗셈을 수행하려면 Python처럼 `//`를 사용합니다. 
+나머지 연산자는 `나머지`입니다. `%`가 아니라는 점에 주의해야 합니다.
+
+### 비교 연산
+K-Prolog의 이항 비교 연산자 중 `<`, `>`, `>=`는 Python과 유사합니다.
+다만 이하 연산자는 Python과 달리 `=<`를 사용합니다. 
+같다 연산자는 `=:=`, 같지 않다 연산자는 `=\=`로서 다른 언어와 상당히 다른 형태입니다.
+등호 `=`는 동형화(unification)에 사용된다는 점에 주의하기 바랍니다.
+
+### 주석
+퍼센트 `%` 문자 이하 줄바꿈문자(newline)까지는 주석으로 취급됩니다.
+
+
+<!--
 ### Mac
 Mac 운영체제에서는 dist 폴더의 k-prolog 파일을 터미널에서 다음과 같이 실행합니다.  
 표준 Prolog 명령줄 인터페이스를 사용하려면, 다음 명령을 입력하세요:
@@ -18,6 +62,7 @@ Mac 운영체제에서는 dist 폴더의 k-prolog 파일을 터미널에서 다�
 ``` shell
 ./k-prolog filename.kpl
 ```
+
 ### Linux
 Linux 운영체제에서는 dist 폴더의 k-prolog 파일을 터미널에서 다음과 같이 실행합니다.  
 표준 Prolog 명령줄 인터페이스를 사용하려면, 다음 명령을 입력하세요:
@@ -28,6 +73,7 @@ Linux 운영체제에서는 dist 폴더의 k-prolog 파일을 터미널에서 �
 ``` shell
 ./k-prolog filename.kpl
 ```
+
 ### Windows
 Windows 운영체제에서는 dist 폴더의 k-prolog.exe 파일을 명령 프롬프트에서 다음과 같이 실행합니다. 
 표준 Prolog 명령줄 인터페이스를 사용하려면, 다음 명령을 입력하세요:
@@ -38,9 +84,10 @@ k-prolog.exe
 ```shell
 k-prolog.exe filename.kpl
 ```
+-->
 
 
-## K-Prolog 코드 예제
+## K-Prolog 코드 예제(nqueens.kpl)
 ``` shell
 퀸들(_엔,_큐에스) :- 범위(1,_엔,_엔에스), 순열(_엔에스,_큐에스), 안전(_큐에스).
 
@@ -73,11 +120,11 @@ k-prolog.exe filename.kpl
     해답출력(_나머지, _다음번호).
 ```
 
-## 테스트 입력- 명령줄 인터페이스
+## 테스트 입력: 명령줄 인터페이스
 
 ``` shell
-?- [엔퀸].
-엔퀸.kpl에서 적재했습니다
+?- [nqueen].
+nqueen.kpl에서 적재했습니다.
 ?- 메인.
 N-Queens 문제 해결기
 보드 크기를 입력하세요:
@@ -95,5 +142,19 @@ N-Queens 문제 해결기
 해답 4: [5, 3, 1, 6, 4, 2]
 ```
 
+## Windows용 배치 파일
+K-Prolog 프로그램 파일은 UTF-8 인코딩으로 작성해야 합니다.
+이를 Windows의 명령 프롬프트(`cmd`) 창에서 보려면 문자 인코딩을 UTF-8 인코딩(코드페이지 65001)으로 바꾸어야 합니다.
+이때 `WinCmds` 폴더의 다음 명령어를 사용할 수 있습니다.
+```
+gokp
+```
+다시 원래 인코딩(코드페이지 949, EUC-KR 호환)으로 명령 프롬프트를 회복하려면, 같은 폴더의 다음 명령어를 사용하기 바랍니다.
+```
+pkog
+```
+
+
 ## Authors
-- 이유민
+* 이유민, yunmin.lee@tufts.edu, [Yumin (Alexis) Lee](https://www.linkedin.com/in/alexis-yumin-lee)
+* 우균, woogyun@pnu.edu, [Gyun Woo](https://github.com/wogyun)

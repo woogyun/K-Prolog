@@ -84,6 +84,8 @@ def parse_command(command: str) -> Command:
         return Load(command[1:-2])
     elif command.startswith("consult(") and command.endswith(")."):
         return Load(command[8:-2])
+    elif command.startswith("적재(") and command.endswith(")."):
+        return Load(command[3:-2])
     elif command == "make." or command == "재적재.":
         return Make()
     elif command == "halt." or command == "종료.":
@@ -93,7 +95,7 @@ def parse_command(command: str) -> Command:
     elif command == "notrace." or command == "추적중단.":
         return NoTrace()
     elif command.startswith("listing") or command.startswith("목록"):
-        if command == "listing." or command == "목록":
+        if command == "listing." or command == "목록.":
             return Listing("none")
         elif (command.startswith("listing(") and command.endswith(").")) or (
             command.startswith("목록") and command.endswith(").")
@@ -240,7 +242,7 @@ def execute(program: List[List[Term]], input_file: str) -> None:
             continue
 
         if isinstance(cmd, Load):
-            print(f"{cmd.path}에서 적재했습니다")
+            print(f"{cmd.path}에서 적재했습니다.")
             try:
                 current_file = cmd.path
                 program, pending = parse_file_multiline(cmd.path, debug_state)
@@ -254,13 +256,13 @@ def execute(program: List[List[Term]], input_file: str) -> None:
             if current_file:
                 try:
                     program, p = parse_file_multiline(current_file, debug_state)
-                    print(f"{current_file}에서 재적재했습니다")
+                    print(f"{current_file}에서 재적재했습니다.")
                 except ErrProlog as e:
                     handle_error(e, "reloading")
                 except FileNotFoundError:
                     handle_error(ErrFileNotFound(current_file), "reloading")
             else:
-                print("재적재할 파일리 없습니다")
+                print("재적재할 파일이 없습니다.")
         elif isinstance(cmd, Trace):
             debug_state.trace_mode = True
             print("참.")
@@ -280,7 +282,7 @@ def execute(program: List[List[Term]], input_file: str) -> None:
                 except FileNotFoundError:
                     handle_error(ErrFileNotFound(current_file), "listing")
             else:
-                print("목록할 파일이 없읍니다")
+                print("목록을 볼 파일이 없습니다.")
         elif isinstance(cmd, Halt):
             break
         elif isinstance(cmd, Query):
@@ -290,7 +292,7 @@ def execute(program: List[List[Term]], input_file: str) -> None:
                 handle_error(e, "query")
                 continue
             if not goals:
-                print("목표가 구문 분석되지 않았습니다")
+                print("목표가 구문 분석되지 않았습니다.")
                 continue
             try:
                 success, unifs = solve(program, goals[0], debug_state)
