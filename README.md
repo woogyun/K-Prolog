@@ -6,12 +6,12 @@ K-Prolog: 한글 Prolog 인터프리터입니다.
 ## 실행 방법
 Python 3.10 이상을 설치한 후 다음 명령을 수행합니다.
 ``` shell
-python main.py
+$ python main.py
 ```
 
-일괄 프로그래밍(batch programming) 형태로 작성된 파일을 수행하려면 다음과 같시 파일 이름을 인수로 전달합니다.
+일괄 프로그래밍(batch programming) 형태로 작성된 파일을 수행하려면 다음과 같이 파일 이름을 인수로 전달합니다.
 ``` shell
-python main.py gcd_batch.kpl
+$ python main.py gcd_batch.kpl
 ```
 
 ## K-Prolog 인터프리터 명령어
@@ -59,7 +59,7 @@ K-Prolog의 이항 비교 연산자 중 `<`, `>`, `>=`는 Python과 유사합니
 퍼센트 `%` 문자 이하 줄바꿈문자(newline)까지는 주석으로 취급됩니다.
 
 ## 기본 술어(built-in predicates)
-Prolog에 사용되는 기본 술어를 K-Prolog에서 어떻게 사용할 수 있는지 알파벳 순으로 정리합니다. 새로 추가했으면 하는 술어가 있다면 연락 주시기 바랍니다.
+Prolog에 사용되는 기본 술어를 K-Prolog에서 어떻게 사용할 수 있는지 알파벳 순으로 정리하면 다음과 같습니다.
 ``` shell
 asserta         추가
 atomic          상수인가
@@ -99,6 +99,7 @@ subtract        원소제거
 write           쓰기
 writeln         쓰고줄바꿈
 ```
+새로 추가했으면 하는 술어가 있다면 이메일로 연락 주시기 바랍니다.
 
 <!--
 ### Mac
@@ -206,4 +207,4 @@ pkog
 
 ## Authors
 * 이유민, yunmin.lee@tufts.edu, [Yumin (Alexis) Lee](https://www.linkedin.com/in/alexis-yumin-lee)
-* 우균, woogyun@pnu.edu, [Gyun Woo](https://github.com/wogyun)
+* 우균, woogyun@pnu.edu, [Gyun Woo](https://github.com/woogyun)
